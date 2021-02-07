@@ -7,6 +7,8 @@
 	w_class = WEIGHT_CLASS_TINY
 	var/colour = "red"
 	var/open = FALSE
+	/// A trait that's applied while someone has this lipstick applied, and is removed when the lipstick is removed
+	var/lipstick_trait
 
 /obj/item/lipstick/purple
 	name = "purple lipstick"
@@ -20,6 +22,10 @@
 /obj/item/lipstick/black
 	name = "black lipstick"
 	colour = "black"
+
+/obj/item/lipstick/black/death
+	name = "Kiss of Death"
+	lipstick_trait = TRAIT_KISS_OF_DEATH
 
 /obj/item/lipstick/random
 	name = "lipstick"
@@ -44,10 +50,11 @@
 		icon_state = "lipstick"
 
 /obj/item/lipstick/attack(mob/M, mob/user)
-	if(!open)
+	if(!open || !ismob(M))
 		return
 
-	if(!ismob(M))
+	if(!ishuman(M))
+		to_chat(user, "<span class='warning'>Where are the lips on that?</span>")
 		return
 
 	if(ishuman(M))
@@ -84,9 +91,14 @@
 
 //you can wipe off lipstick with paper!
 /obj/item/paper/attack(mob/M, mob/user)
-	if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
-		if(!ismob(M))
-			return
+	if(user.zone_selected != BODY_ZONE_PRECISE_MOUTH || !ishuman(M))
+		return ..()
+
+	var/mob/living/carbon/human/target = M
+	if(target == user)
+		to_chat(user, "<span class='notice'>You wipe off the lipstick with [src].</span>")
+		target.update_lips(null)
+		return
 
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
