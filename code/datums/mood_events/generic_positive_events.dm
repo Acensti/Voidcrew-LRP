@@ -219,7 +219,6 @@
 	mood_change = 4
 	timeout = 1.5 MINUTES
 
-
 /datum/mood_event/kiss
 	description = "<span class='nicegreen'>Someone blew a kiss at me, I must be a real catch!</span>\n"
 	mood_change = 1.5

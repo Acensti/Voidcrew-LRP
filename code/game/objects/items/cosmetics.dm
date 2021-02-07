@@ -91,14 +91,9 @@
 
 //you can wipe off lipstick with paper!
 /obj/item/paper/attack(mob/M, mob/user)
-	if(user.zone_selected != BODY_ZONE_PRECISE_MOUTH || !ishuman(M))
-		return ..()
-
-	var/mob/living/carbon/human/target = M
-	if(target == user)
-		to_chat(user, "<span class='notice'>You wipe off the lipstick with [src].</span>")
-		target.update_lips(null)
-		return
+	if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+		if(!ismob(M))
+			return
 
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M

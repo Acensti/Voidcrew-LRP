@@ -7,8 +7,7 @@
 	force = 0
 	throwforce = 0
 	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
-	attack_verb_continuous = list("bops")
-	attack_verb_simple = list("bop")
+	attack_verb = list("bopped")
 
 /obj/item/circlegame/Initialize()
 	. = ..()
@@ -106,12 +105,11 @@
 	name = "slapper"
 	desc = "This is how real men fight."
 	icon_state = "latexballon"
-	inhand_icon_state = "nothing"
+	item_state = "nothing"
 	force = 0
 	throwforce = 0
 	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
-	attack_verb_continuous = list("slaps")
-	attack_verb_simple = list("slap")
+	attack_verb = list("slapped")
 	hitsound = 'sound/effects/snap.ogg'
 
 /obj/item/slapper/attack(mob/M, mob/living/carbon/human/user)
@@ -130,7 +128,7 @@
 	name = "noogie"
 	desc = "Get someone in an aggressive grab then use this on them to ruin their day."
 	icon_state = "latexballon"
-	inhand_icon_state = "nothing"
+	item_state = "nothing"
 	force = 0
 	throwforce = 0
 	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
@@ -142,11 +140,6 @@
 
 	if(!(target?.get_bodypart(BODY_ZONE_HEAD)) || user.pulling != target || user.grab_state < GRAB_AGGRESSIVE || user.getStaminaLoss() > 80)
 		return FALSE
-
-	var/obj/item/bodypart/head/the_head = target.get_bodypart(BODY_ZONE_HEAD)
-	if((target.get_biological_state() != BIO_FLESH_BONE && target.get_biological_state() != BIO_JUST_FLESH) || !the_head.is_organic_limb())
-		to_chat(user, "<span class='warning'>You can't noogie [target], [target.p_they()] [target.p_have()] no skin on [target.p_their()] head!</span>")
-		return
 
 	// [user] gives [target] a [prefix_desc] noogie[affix_desc]!
 	var/brutal_noogie = FALSE // was it an extra hard noogie?
@@ -223,7 +216,7 @@
 	desc = "I want you all to know, everyone and anyone, to seal it with a kiss."
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "heart"
-	inhand_icon_state = "nothing"
+	item_state = "nothing"
 	force = 0
 	throwforce = 0
 	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
@@ -263,7 +256,7 @@
 	damage = 0
 	nodamage = TRUE // love can't actually hurt you
 	armour_penetration = 100 // but if it could, it would cut through even the thickest plate
-	flag = MAGIC // and most importantly, love is magic~
+	flag = "magic" // and most importantly, love is magic~
 
 /obj/projectile/kiss/fire(angle, atom/direct_target)
 	if(firer)
@@ -288,7 +281,7 @@
 		if(1)
 			other_msg = "stumbles slightly, turning a bright red!"
 			self_msg = "You lose control of your limbs for a moment as your blood rushes to your face, turning it bright red!"
-			target_living.add_confusion(rand(5, 10))
+			target_living.confused = (rand(5, 10))
 		if(2)
 			other_msg = "stammers softly for a moment before choking on something!"
 			self_msg = "You feel your tongue disappear down your throat as you fight to remember how to make words!"
@@ -306,8 +299,6 @@
 	name = "kiss of death"
 	nodamage = FALSE // okay i kinda lied about love not being able to hurt you
 	damage = 35
-	wound_bonus = 0
-	sharpness = SHARP_POINTY
 	color = COLOR_BLACK
 
 /obj/projectile/kiss/death/on_hit(atom/target, blocked, pierce_hit)
