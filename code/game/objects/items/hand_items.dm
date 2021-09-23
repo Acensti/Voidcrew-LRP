@@ -211,6 +211,98 @@
 	noogie_loop(user, target, iteration)
 
 
+/obj/item/slapper
+	name = "slapper"
+	desc = "This is how real men fight."
+	icon_state = "latexballon"
+	item_state = "nothing"
+	force = 0
+	throwforce = 0
+	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
+	attack_verb = list("slapped")
+	hitsound = 'sound/effects/snap.ogg'
+	/// How many smaller table smacks we can do before we're out
+	var/table_smacks_left = 3
+
+/obj/item/slapper/attack(mob/living/M, mob/living/carbon/human/user)
+	if(ishuman(M))
+		var/mob/living/carbon/human/L = M
+		if(L && L.dna && L.dna.species)
+			L.dna.species.stop_wagging_tail(M)
+	user.do_attack_animation(M)
+
+	var/slap_volume = 50
+	var/datum/status_effect/offering/kiss_check = M.has_status_effect(STATUS_EFFECT_OFFERING)
+	if(kiss_check && istype(kiss_check.offered_item, /obj/item/kisser) && (user in kiss_check.possible_takers))
+		user.visible_message(span_danger("[user] scoffs at [M]'s advance, winds up, and smacks [M.p_them()] hard to the ground!"),
+			span_notice("The nerve! You wind back your hand and smack [M] hard enough to knock [M.p_them()] over!"),
+			span_hear("You hear someone get the everloving shit smacked out of them!"), ignored_mobs = M)
+		to_chat(M, span_userdanger("You see [user] scoff and pull back [user.p_their()] arm, then suddenly you're on the ground with an ungodly ringing in your ears!"))
+		slap_volume = 120
+		SEND_SOUND(M, sound('sound/weapons/flash_ring.ogg'))
+		shake_camera(M, 2, 2)
+		M.Paralyze(2.5 SECONDS)
+		M.confused += 7
+		M.adjustStaminaLoss(40)
+	else if(user.zone_selected == BODY_ZONE_HEAD || user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+		user.visible_message(span_danger("[user] slaps [M] in the face!"),
+			span_notice("You slap [M] in the face!"),
+			span_hear("You hear a slap."))
+	else
+		user.visible_message(span_danger("[user] slaps [M]!"),
+			span_notice("You slap [M]!"),
+			span_hear("You hear a slap."))
+	playsound(M, 'sound/weapons/slap.ogg', slap_volume, TRUE, -1)
+	return
+
+/obj/item/slapper/on_offered(mob/living/carbon/offerer)
+	. = TRUE
+
+	if(!(locate(/mob/living/carbon) in orange(1, offerer)))
+		visible_message(span_danger("[offerer] raises [offerer.p_their()] arm, looking around for a high-five, but there's no one around!"), \
+			span_warning("You post up, looking for a high-five, but finding no one within range!"), null, 2)
+		return
+
+	offerer.visible_message(span_notice("[offerer] raises [offerer.p_their()] arm, looking for a high-five!"), \
+		span_notice("You post up, looking for a high-five!"), null, 2)
+	offerer.apply_status_effect(STATUS_EFFECT_OFFERING, src, /atom/movable/screen/alert/give/highfive)
+
+/// Yeah broh! This is where we do the high-fiving (or high-tenning :o)
+/obj/item/slapper/on_offer_taken(mob/living/carbon/offerer, mob/living/carbon/taker)
+	. = TRUE
+
+	var/open_hands_taker
+	var/slappers_giver
+	for(var/i in taker.held_items) // see how many hands the taker has open for high'ing
+		if(isnull(i))
+			open_hands_taker++
+
+	if(!open_hands_taker)
+		to_chat(taker, span_warning("You can't high-five [offerer] with no open hands!"))
+		SEND_SIGNAL(taker, COMSIG_ADD_MOOD_EVENT, "high_five", /datum/mood_event/high_five_full_hand) // not so successful now!
+		return
+
+	for(var/i in offerer.held_items)
+		var/obj/item/slapper/slap_check = i
+		if(istype(slap_check))
+			slappers_giver++
+
+	if(slappers_giver >= 2) // we only check this if it's already established the taker has 2+ hands free
+		offerer.visible_message(span_notice("[taker] enthusiastically high-tens [offerer]!"), span_nicegreen("Wow! You're high-tenned [taker]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), ignored_mobs=taker)
+		to_chat(taker, span_nicegreen("You give high-tenning [offerer] your all!"))
+		playsound(offerer, 'sound/weapons/slap.ogg', 100, TRUE, 1)
+		SEND_SIGNAL(offerer, COMSIG_ADD_MOOD_EVENT, "high_five", /datum/mood_event/high_ten)
+		SEND_SIGNAL(taker, COMSIG_ADD_MOOD_EVENT, "high_five", /datum/mood_event/high_ten)
+	else
+		offerer.visible_message(span_notice("[taker] high-fives [offerer]!"), span_nicegreen("All right! You're high-fived by [taker]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), ignored_mobs=taker)
+		to_chat(taker, span_nicegreen("You high-five [offerer]!"))
+		playsound(offerer, 'sound/weapons/slap.ogg', 50, TRUE, -1)
+		SEND_SIGNAL(offerer, COMSIG_ADD_MOOD_EVENT, "high_five", /datum/mood_event/high_five)
+		SEND_SIGNAL(taker, COMSIG_ADD_MOOD_EVENT, "high_five", /datum/mood_event/high_five)
+	qdel(src)
+
+
+
 /obj/item/kisser
 	name = "kiss"
 	desc = "I want you all to know, everyone and anyone, to seal it with a kiss."
@@ -222,6 +314,8 @@
 	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
 	/// The kind of projectile this version of the kiss blower fires
 	var/kiss_type = /obj/projectile/kiss
+	/// TRUE if the user was aiming anywhere but the mouth when they offer the kiss, if it's offered
+	var/cheek_kiss
 
 /obj/item/kisser/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -229,7 +323,6 @@
 	user.visible_message("<b>[user]</b> blows \a [blown_kiss] at [target]!", "<span class='notice'>You blow \a [blown_kiss] at [target]!</span>")
 
 	//Shooting Code:
-	blown_kiss.spread = 0
 	blown_kiss.original = target
 	blown_kiss.fired_from = user
 	blown_kiss.firer = user // don't hit ourself that would be really annoying
@@ -237,6 +330,34 @@
 	blown_kiss.preparePixelProjectile(target, user)
 	blown_kiss.fire()
 	qdel(src)
+
+/obj/item/kisser/on_offered(mob/living/carbon/offerer)
+	if(!(locate(/mob/living/carbon) in orange(1, offerer)))
+		return TRUE
+
+	cheek_kiss = (offerer.zone_selected != BODY_ZONE_PRECISE_MOUTH)
+	offerer.visible_message(span_notice("[offerer] leans in slightly, offering a kiss[cheek_kiss ? " on the cheek" : ""]!"),
+		span_notice("You lean in slightly, indicating you'd like to offer a kiss[cheek_kiss ? " on the cheek" : ""]!"), null, 2)
+	offerer.apply_status_effect(STATUS_EFFECT_OFFERING, src)
+	return TRUE
+
+/obj/item/kisser/on_offer_taken(mob/living/carbon/offerer, mob/living/carbon/taker)
+	var/obj/projectile/blown_kiss = new kiss_type(get_turf(offerer))
+	offerer.visible_message("<b>[offerer]</b> gives [taker] \a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!!", span_notice("You give [taker] \a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!"), ignored_mobs = taker)
+	to_chat(taker, span_nicegreen("[offerer] gives you \a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!"))
+	offerer.face_atom(taker)
+	taker.face_atom(offerer)
+	offerer.do_item_attack_animation(taker, used_item=src)
+	//We're still firing a shot here because I don't want to deal with some weird edgecase where direct impacting them with the projectile causes it to freak out because there's no angle or something
+	blown_kiss.original = taker
+	blown_kiss.fired_from = offerer
+	blown_kiss.firer = offerer // don't hit ourself that would be really annoying
+	blown_kiss.impacted = list(offerer = TRUE) // just to make sure we don't hit the wearer
+	blown_kiss.preparePixelProjectile(taker, offerer)
+	blown_kiss.suppressed = SUPPRESSED_VERY // this also means it's a direct offer
+	blown_kiss.fire()
+	qdel(src)
+	return TRUE // so the core offering code knows to halt
 
 /obj/item/kisser/death
 	name = "kiss of death"
@@ -293,7 +414,7 @@
 			target_living.face_atom(firer)
 			target_living.Stun(rand(3 SECONDS, 8 SECONDS))
 
-	target_living.visible_message("<b>[target_living]</b> [other_msg]", "<span class='userdanger'>Whoa! [self_msg]</span>")
+	target_living.visible_message("<b>[target_living]</b> [other_msg]", "<span class='userdanger'>Whoa! [self_msg]<span>")
 
 /obj/projectile/kiss/death
 	name = "kiss of death"
