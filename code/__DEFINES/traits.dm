@@ -207,63 +207,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ANTENNAE	"antennae"
 /// Blowing kisses actually does damage to the victim
 #define TRAIT_KISS_OF_DEATH	"kiss_of_death"
-
-#define TRAIT_NOBLEED "nobleed" //This carbon doesn't bleed
-
-// You can stare into the abyss, but it does not stare back.
-// You're immune to the hallucination effect of the supermatter, either
-// through force of will, or equipment. Present on /mob or /datum/mind
-#define TRAIT_SUPERMATTER_MADNESS_IMMUNE "supermatter_madness_immune"
-
-// You can stare into the abyss, and it turns pink.
-// Being close enough to the supermatter makes it heal at higher temperatures
-// and emit less heat. Present on /mob or /datum/mind
-#define TRAIT_SUPERMATTER_SOOTHER "supermatter_soother"
-/*
-* Trait granted by various security jobs, and checked by [/obj/item/food/donut]
-* When present in the mob's mind, they will always love donuts.
-*/
-#define TRAIT_DONUT_LOVER "donut_lover"
-
-// METABOLISMS
-// Various jobs on the station have historically had better reactions
-// to various drinks and foodstuffs. Security liking donuts is a classic
-// example. Through years of training/abuse, their livers have taken
-// a liking to those substances. Steal a sec officer's liver, eat donuts good.
-
-// These traits are applied to /obj/item/organ/liver
-#define TRAIT_LAW_ENFORCEMENT_METABOLISM "law_enforcement_metabolism"
-#define TRAIT_CULINARY_METABOLISM "culinary_metabolism"
-#define TRAIT_COMEDY_METABOLISM "comedy_metabolism"
-#define TRAIT_MEDICAL_METABOLISM "medical_metabolism"
-#define TRAIT_GREYTIDE_METABOLISM "greytide_metabolism"
-#define TRAIT_ENGINEER_METABOLISM "engineer_metabolism"
-#define TRAIT_ROYAL_METABOLISM "royal_metabolism"
-#define TRAIT_PRETENDER_ROYAL_METABOLISM "pretender_royal_metabolism"
-
-// If present on a mob or mobmind, allows them to "suplex" an immovable rod
-// turning it into a glorified potted plant, and giving them an
-// achievement. Can also be used on rod-form wizards.
-// Normally only present in the mind of a Research Director.
-#define TRAIT_ROD_SUPLEX "rod_suplex"
-
-//SKILLS
-#define TRAIT_UNDERWATER_BASKETWEAVING_KNOWLEDGE "underwater_basketweaving"
-#define TRAIT_WINE_TASTER "wine_taster"
-#define TRAIT_BONSAI "bonsai"
-#define TRAIT_LIGHTBULB_REMOVER "lightbulb_remover"
-#define TRAIT_KNOW_CYBORG_WIRES "know_cyborg_wires"
-#define TRAIT_KNOW_ENGI_WIRES "know_engi_wires"
-#define TRAIT_ENTRAILS_READER "entrails_reader"
-
-///Movement type traits for movables. See elements/movetype_handler.dm
-#define TRAIT_MOVE_GROUND		"move_ground"
-#define TRAIT_MOVE_FLYING		"move_flying"
-#define TRAIT_MOVE_VENTCRAWLING	"move_ventcrawling"
-#define TRAIT_MOVE_FLOATING		"move_floating"
-#define TRAIT_MOVE_PHASING		"move_phasing"
-/// Disables the floating animation. See above.
-#define TRAIT_NO_FLOATING_ANIM		"no-floating-animation"
+/// The holder of this trait can be picked up and held by another mob that does NOT have this trait.
+#define TRAIT_HOLDABLE "holdable"
 
 //non-mob traits
 /// Used for limb-based paralysis, where replacing the limb will fix it.
