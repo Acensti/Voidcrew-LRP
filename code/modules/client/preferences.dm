@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	///Should we automatically fit the viewport?
 	var/auto_fit_viewport = TRUE
 	///Should we be in the widescreen mode set by the config?
-	var/widescreenpref = FALSE
+	var/widescreenpref = TRUE
 	///What size should pixels be displayed as? 0 is strech to fit
 	var/pixel_size = 0
 	///What scaling method should we use?
