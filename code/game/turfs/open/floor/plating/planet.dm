@@ -45,11 +45,10 @@
 	baseturfs = /turf/open/floor/plating/dirt/dark
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
-	desc = "Lush, verdant grass."
+	desc = "Greener on the other side."
 	icon_state = "junglegrass"
 	base_icon_state = "junglegrass"
 	smooth_icon = 'icons/turf/floors/junglegrass.dmi'
-	gender = PLURAL
 
 /turf/closed/mineral/random/jungle
 	turf_type = /turf/open/floor/plating/dirt/jungle/dark

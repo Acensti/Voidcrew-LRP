@@ -1161,7 +1161,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	sharpness = IS_SHARP
 	faction_bonus_force = 30
-	nemesis_factions = list("mining", "boss", "beach", "wasteland")
+	nemesis_factions = list("mining", "boss")
 	var/transform_cooldown
 	var/swiping = FALSE
 	var/bleed_stacks_per_hit = 3
