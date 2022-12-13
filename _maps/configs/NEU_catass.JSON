@@ -1,0 +1,37 @@
+{
+	"map_name": "Cat-class Boring Ass Ship",
+	"prefix": "NEU",
+	"namelists": ["GENERAL", "SPACE"],
+	"map_short_name": "Cat-Class",
+	"map_path": "_maps/shuttles/shiptest/voidcrew/catass.dmm",
+	"map_id": "catass",
+	"roundstart": true,
+	"job_slots": {
+		"Captain": {
+			"outfit": "/datum/outfit/job/captain",
+			"officer": true,
+			"slots": 1
+		},
+		"Research Director": {
+			"outfit": "/datum/outfit/job/research_director",
+			"slots": 1
+			},
+		"Chief Medical Officer": {
+			"outfit": "/datum/outfit/job/chief_medical_officer",
+			"slots": 1
+			},
+		"Chief Engineer": {
+			"outfit": "/datum/outfit/job/chief_engineer",
+			"slots": 1
+		},
+		"Miner": {
+			"outfit": "/datum/outfit/job/shaft_miner",
+			"slots": 4
+		},
+		"Assistant": {
+			"outfit": "/datum/outfit/job/assistant",
+			"slots": 5
+		}
+	},
+	"cost": 750
+}
