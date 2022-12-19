@@ -1,7 +1,7 @@
 {
 	"map_name": "Science-class Frankenstein Ship",
 	"map_short_name": "Science-class",
-	"prefix": "KOS",
+	"prefix": "NEU",
 	"map_path": "_maps/shuttles/shiptest/Frankenstein.dmm",
 	"map_id": "Frankenstein",
 	"job_slots": {
