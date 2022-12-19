@@ -1,7 +1,7 @@
 {
 	"map_name": "Science-class Frankenstein Ship",
 	"map_short_name": "Science-class",
-	"prefix": "NEU",
+	"prefix": "KOS",
 	"map_path": "_maps/shuttles/shiptest/Frankenstein.dmm",
 	"map_id": "Frankenstein",
 	"job_slots": {
@@ -15,5 +15,5 @@
 			"slots": 2
 
 		},
-	"cost": 600
+	"cost": 850
 }
