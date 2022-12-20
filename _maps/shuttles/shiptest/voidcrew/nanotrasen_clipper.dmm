@@ -63,6 +63,10 @@
 	pixel_y = 10
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/suit_storage_unit/ert/security{
+	storage_type = /obj/item/tank/jetpack/oxygen
+	},
+/obj/effect/turf_decal/industrial/warning/full,
 /turf/open/floor/carpet/nanoweave/red,
 /area/ship/hallway/starboard)
 "aC" = (
@@ -264,7 +268,7 @@
 /obj/item/radio/headset/heads/captain/alt,
 /obj/item/gun/energy/laser/captain,
 /obj/item/storage/belt/sabre,
-/obj/item/clothing/suit/space/hardsuit/swat/captain,
+/obj/item/clothing/suit/space/hardsuit/ert,
 /obj/item/clothing/under/rank/command/captain/nt,
 /obj/item/clothing/under/rank/command/captain/nt/skirt,
 /obj/item/clothing/under/rank/command/captain/parade,
@@ -2243,6 +2247,7 @@
 	},
 /obj/structure/table/wood/reinforced,
 /obj/machinery/recharger,
+/obj/item/tank/jetpack/oxygen,
 /turf/open/floor/carpet/black,
 /area/ship/bridge)
 "BX" = (
@@ -2581,13 +2586,14 @@
 /turf/closed/wall/mineral/titanium,
 /area/ship/hallway/starboard)
 "GX" = (
-/obj/machinery/suit_storage_unit/ert/security,
+/obj/machinery/suit_storage_unit/ert/security{
+	storage_type = /obj/item/tank/jetpack/oxygen
+	},
 /obj/machinery/door/window/survival_pod{
 	req_access_txt = "1"
 	},
 /obj/effect/turf_decal/corner_techfloor_gray/diagonal,
 /obj/effect/turf_decal/industrial/warning/full,
-/obj/item/tank/jetpack/oxygen,
 /turf/open/floor/plasteel/patterned,
 /area/ship/security/armory)
 "Hc" = (
@@ -2852,7 +2858,9 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/machinery/suit_storage_unit/security,
+/obj/machinery/suit_storage_unit/ert/security{
+	storage_type = /obj/item/tank/jetpack/oxygen
+	},
 /obj/effect/turf_decal/industrial/warning/full,
 /turf/open/floor/carpet/nanoweave/red,
 /area/ship/hallway/starboard)
@@ -3503,7 +3511,9 @@
 /turf/open/floor/plasteel/tech/techmaint,
 /area/ship/maintenance/fore)
 "QF" = (
-/obj/machinery/suit_storage_unit/ert/security,
+/obj/machinery/suit_storage_unit/ert/security{
+	storage_type = /obj/item/tank/jetpack/oxygen
+	},
 /obj/machinery/door/window/survival_pod{
 	req_access_txt = "1"
 	},
@@ -3512,7 +3522,6 @@
 	},
 /obj/effect/turf_decal/corner_techfloor_gray/diagonal,
 /obj/effect/turf_decal/industrial/warning/full,
-/obj/item/tank/jetpack/oxygen,
 /turf/open/floor/plasteel/patterned,
 /area/ship/security/armory)
 "QG" = (
