@@ -6,6 +6,7 @@
 	"namelists": ["MYTHOLOGICAL"],
 	"map_path": "_maps/shuttles/shiptest/voidcrew/merlin.dmm",
 	"map_id": "merlin",
+	"roundstart": false,
 	"limit": 1,
 	"job_slots": {
 		"ArchWizard": {
