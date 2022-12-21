@@ -4,7 +4,7 @@
 	"namelists": ["GENERAL", "MYTHOLOGICAL"],
 	"map_name": "Prometheus-Class Plasma Tanker",
 	"map_short_name": "Prometheus-class",
-	"map_path": "_maps/shuttles/shiptest/nanotrasen_tanker.dmm",
+	"map_path": "_maps/shuttles/shiptest/NEU_prometheus.dmm",
 	"limit": 2,
 	"job_slots": {
 		"Captain": {
