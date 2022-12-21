@@ -5,7 +5,8 @@
 	"prefix": "KOS",
 	"namelists": ["MYTHOLOGICAL"],
 	"map_path": "_maps/shuttles/shiptest/voidcrew/crescent.dmm",
-	"map_id": "crescnt",
+	"map_id": "crescent",
+	"roundstart": false,
 	"limit": 3,
 	"job_slots": {
 		"ArchWizard": {
