@@ -1525,22 +1525,6 @@
 	},
 /turf/open/floor/plating,
 /area/ship/maintenance/port)
-"Ft" = (
-/obj/machinery/atmospherics/pipe/simple/yellow/hidden/layer2,
-/obj/machinery/button/door{
-	id = "cell 2m";
-	name = "cell 2";
-	pixel_y = 36;
-	pixel_x = 8
-	},
-/obj/machinery/button/door{
-	id = "cell 1m";
-	name = "cell 1";
-	pixel_y = 36;
-	pixel_x = -8
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/ship/security)
 "Fy" = (
 /obj/machinery/power/terminal{
 	dir = 8
@@ -1576,9 +1560,9 @@
 /area/ship/maintenance/port)
 "GA" = (
 /obj/effect/turf_decal/industrial/outline/yellow,
-/obj/structure/closet/crate,
 /obj/effect/spawner/lootdrop/organ_spawner,
 /obj/effect/spawner/lootdrop/organ_spawner,
+/obj/structure/closet/crate/freezer,
 /turf/open/floor/plasteel/tech/techmaint,
 /area/ship/cargo)
 "GJ" = (
@@ -2037,18 +2021,6 @@
 	id = "Interiorblastmalf";
 	name = "interior door";
 	pixel_y = 26;
-	pixel_x = 8
-	},
-/obj/machinery/button/door{
-	id = "cell 1m";
-	name = "cell 1";
-	pixel_y = 36;
-	pixel_x = -8
-	},
-/obj/machinery/button/door{
-	id = "cell 2m";
-	name = "cell 2";
-	pixel_y = 36;
 	pixel_x = 8
 	},
 /obj/machinery/button/door{
@@ -3870,7 +3842,7 @@ gq
 kC
 lt
 gU
-Ft
+Kq
 ti
 Kq
 gU
