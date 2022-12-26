@@ -1147,8 +1147,10 @@
 	dir = 8
 	},
 /obj/machinery/airalarm/directional/south,
-/obj/item/trash/semki,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/computer/autopilot{
+	dir = 8
+	},
 /turf/open/floor/carpet/stellar,
 /area/ship/bridge)
 "wM" = (

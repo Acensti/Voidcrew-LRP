@@ -62,6 +62,18 @@
 /obj/machinery/power/apc/auto_name/north,
 /turf/open/floor/carpet/green,
 /area/ship/cargo)
+"aC" = (
+/obj/structure/bed,
+/obj/item/bedsheet/wiz,
+/obj/structure/curtain/cloth/fancy{
+	layer = 3.9
+	},
+/obj/structure/mirror/magic{
+	pixel_y = 28;
+	pixel_x = null
+	},
+/turf/open/floor/wood,
+/area/ship/crew/dorm)
 "aD" = (
 /obj/machinery/power/smes/shuttle/precharged{
 	dir = 4;
@@ -69,6 +81,9 @@
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "wizardship4en1"
 	},
 /turf/open/floor/plating,
 /area/ship/science)
@@ -601,6 +616,9 @@
 	dir = 4;
 	name = "phlogiston heater"
 	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "wizardship4en1"
+	},
 /turf/open/floor/plating,
 /area/ship/science)
 "fF" = (
@@ -784,6 +802,12 @@
 	},
 /turf/open/floor/carpet/green,
 /area/ship/maintenance/aft)
+"hn" = (
+/obj/structure/table/reinforced,
+/obj/item/shovel/spoon,
+/obj/item/shovel/spoon,
+/turf/open/floor/wood/ebony,
+/area/ship/crew/canteen/kitchen)
 "hA" = (
 /obj/structure/window/plasma/reinforced/fulltile{
 	color = "#008000"
@@ -976,9 +1000,6 @@
 	},
 /obj/structure/window/plasma/reinforced/spawner/east{
 	color = "#008000"
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "wizardship4"
 	},
 /turf/open/floor/plating,
 /area/ship/science)
@@ -1801,9 +1822,6 @@
 /obj/structure/window/plasma/reinforced/spawner/east{
 	color = "#008000"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "wizardship4"
-	},
 /turf/open/floor/plating,
 /area/ship/cargo)
 "sg" = (
@@ -2303,7 +2321,7 @@
 /turf/open/floor/wood/mahogany,
 /area/ship/storage)
 "wv" = (
-/obj/item/kirbyplants/random,
+/obj/machinery/computer/autopilot,
 /turf/open/floor/wood/yew,
 /area/ship/bridge)
 "wx" = (
@@ -2560,6 +2578,9 @@
 	dir = 4;
 	name = "phlogiston heater"
 	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "wizardship4en2"
+	},
 /turf/open/floor/plating,
 /area/ship/cargo)
 "yp" = (
@@ -2706,6 +2727,9 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "wizardship4en2"
+	},
 /turf/open/floor/plating,
 /area/ship/cargo)
 "zw" = (
@@ -2793,9 +2817,6 @@
 	},
 /obj/structure/window/plasma/reinforced/spawner/east{
 	color = "#008000"
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "wizardship4"
 	},
 /turf/open/floor/plating,
 /area/ship/science)
@@ -4109,6 +4130,13 @@
 /area/ship/crew/dorm)
 "Li" = (
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
+/obj/machinery/button/door{
+	id = "wizardship4en2";
+	name = "Engine Shutters";
+	pixel_x = -26;
+	req_access_txt = "1";
+	pixel_y = 5
+	},
 /turf/open/floor/wood/bamboo,
 /area/ship/cargo)
 "Lx" = (
@@ -5099,6 +5127,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 5
 	},
+/obj/machinery/button/door{
+	id = "wizardship4en1";
+	name = "Engine Shutters";
+	pixel_x = -26;
+	req_access_txt = "1";
+	pixel_y = -5
+	},
 /turf/open/floor/wood/bamboo,
 /area/ship/science)
 "WY" = (
@@ -5166,9 +5201,6 @@
 	},
 /obj/structure/window/plasma/reinforced/spawner/east{
 	color = "#008000"
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "wizardship4"
 	},
 /turf/open/floor/plating,
 /area/ship/cargo)
@@ -6112,7 +6144,7 @@ ZU
 Tv
 ny
 mi
-KD
+hn
 ny
 rd
 ZU
@@ -7129,7 +7161,7 @@ VE
 De
 nS
 Jm
-Kp
+aC
 kS
 Lx
 As
