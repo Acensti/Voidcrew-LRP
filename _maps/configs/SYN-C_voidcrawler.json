@@ -1,9 +1,9 @@
 {
-	"map_name": "Voidcrawlee-class Chemical Terrorizer",
+	"map_name": "Voidcrawler-class Chemical Terrorizer",
 	"map_short_name": "Voidcrawler-Class",
 	"prefix": "SYN-C",
 	"map_path": "_maps/shuttles/shiptest/voidcrew/voidcrawler.dmm",
-	"map_id": "voidcrawlee",
+	"map_id": "voidcrawler",
 	"job_slots": {
 		"Syndicate Strike Captain": {
 			"outfit": "/datum/outfit/syndicate_empty/sbc/assault/captain",
