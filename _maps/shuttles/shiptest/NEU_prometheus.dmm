@@ -375,6 +375,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 1
 	},
+/obj,
 /turf/closed/wall/mineral/titanium,
 /area/ship/engineering/atmospherics)
 "jc" = (
@@ -561,9 +562,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
-	},
-/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer4{
-	dir = 1
 	},
 /obj/structure/fans/tiny,
 /obj/machinery/atmospherics/pipe/simple/purple/hidden/layer4{
