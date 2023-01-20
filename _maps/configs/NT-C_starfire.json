@@ -1,7 +1,7 @@
 {
-	"map_name": "Atmos-class Atmospheric Ship",
-	"map_short_name": "Atmos-class",
-	"prefix": "NEU",
+	"map_name": "Starfire-class Atmospherics gasser",
+	"map_short_name": "Starfire-class",
+	"prefix": "NT-C",
 	"map_path": "_maps/shuttles/shiptest/voidcrew/Atmosia.dmm",
 	"map_id": "Atmosia",
 	"job_slots": {
@@ -9,5 +9,5 @@
 		"Atmospheric Technician": 3
     
 	},
-	"cost": 500
+	"cost": 700
 }
